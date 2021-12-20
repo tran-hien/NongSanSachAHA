@@ -1,0 +1,13 @@
+{% extends 'homepage/base.html' %} {% load static %} {% block title %}AHA | Login{% endblock %} {% block cssblock %}
+<link rel="stylesheet" href="{% static 'homepage/css/login.css' %}" type="text/css">{% endblock %} {% block content %}
+
+<div class="Login">
+    <form action="" method="post">
+        {% csrf_token %}
+        <h2 style="text-align: center; margin-bottom:10px; ">Login</h2>
+        {{ form.as_p }}
+        <p style="text-align: center;"><input type="submit" name="" value="Login"></p>
+    </form>
+
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'homepage/base.html' %} {% load static %} {% block title %}AHA | Registation Success{% endblock %} {% block cssblock %}
+<link rel="stylesheet" href="{% static 'homepage/css/login.css' %}" type="text/css"> {% endblock %} {% block content %}
+
+<div class="container">
+    <div class="card">
+        <div class="card-body" style="text-align: center;">
+            <h3>Registation Success!</h3>
+            <p>Welcome, {{ username }}!</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
