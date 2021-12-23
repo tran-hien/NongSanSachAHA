@@ -207,15 +207,24 @@
                     {% if product_item %} {% for p in product_item %}
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg={{ p.product_img.url }}>
+                            <div class="product__item__pic set-bg" data-setbg="{% static p.product_img.url %}">
                                 <ul class="product__item__pic__hover">
                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                    <li>
+                                        <form method="POST" action="{% url 'cart:add' %}">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="quantity" value="1" />
+                                            <input type="hidden" name="product_id" value="{{ p.id }}" />
+                                            <button type="submit" class="btn btn-primary">
+                                            <i class="fa fa-shopping-cart"></i>
+                                        </button>
+                                        </form>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
                                 <h6><a href="{% url 'product_app:details' p.id %}">{{ p.title }}</a></h6>
-                                <h5>{{ p.price }}</h5>
+                                <h5>{{ p.price }}VNĐ</h5>
                             </div>
                         </div>
                     </div>

@@ -26,7 +26,7 @@
             <a href="{% url 'user_app:register' %}"><i class="fa fa-user"></i>Register</a>
         </div>
         <div class="header__top__right__auth">
-            <a href="#"><i class="fa fa-user"></i>Admin Login</a>
+            <a href="/admin"><i class="fa fa-user"></i>Admin Login</a>
         </div>
         {% else %}
         <div class="header__top__right__auth">
@@ -95,7 +95,7 @@
                             <a href="{% url 'user_app:register' %}"><i class="fa fa-user"></i>Register</a>
                         </div>
                         <div class="header__top__right__auth">
-                            <a href="#"><i class="fa fa-user"></i>Admin</a>
+                            <a href="/admin"><i class="fa fa-user"></i>Admin</a>
                         </div>
                         {% else %}
                         <div class="header__top__right__auth">
@@ -140,7 +140,7 @@
                 <div class="header__cart">
                     <ul>
                         <li><a href="#"><i class="fa fa-heart"></i> <span>0</span></a></li>
-                        <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>0</span></a></li>
+                        <li><a href="{% url 'cart:cart_details' %}"><i class="fa fa-shopping-bag"></i> <span>0</span></a></li>
                     </ul>
                     <div class="header__cart__price">item: <span>0</span></div>
                 </div>
