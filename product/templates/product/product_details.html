@@ -52,7 +52,7 @@
             <div class="col-lg-6 col-md-6">
                 <div class="product__details__pic">
                     <div class="product__details__pic__item">
-                        <img class="product__details__pic__item--large" src="{{ pd.product_img }}" alt="">
+                        <img class="product__details__pic__item--large" src="{% static pd.product_img.url %}" alt="">
                     </div>
                     <div class="product__details__pic__slider owl-carousel">
                         <img data-imgbigurl="img/product/details/product-details-2.jpg" src="img/product/details/thumb-1.jpg" alt="">
@@ -73,7 +73,7 @@
                         <i class="fa fa-star-half-o"></i>
                         <span>(18 reviews)</span>
                     </div>
-                    <div class="product__details__price">{{ pd.price }}</div>
+                    <div class="product__details__price">{{ pd.price }}VNĐ</div>
                     <p>{{ pd.description }}</p>
                     <div class="product__details__quantity">
                         <div class="quantity">

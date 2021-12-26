@@ -15,7 +15,7 @@ class Product(models.Model):
     description = models.TextField(default='')
     price = models.IntegerField(default='')
     active = models.BooleanField(default=True)
-    product_img = models.ImageField(upload_to=None, height_field=None, width_field=None)
+    product_img = models.ImageField(upload_to="static/product_images/", null=True, blank=True)
 
 class Variation(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
