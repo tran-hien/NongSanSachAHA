@@ -138,4 +138,7 @@ LOGIN_URL = '/login/'
 
 LOGIN_REDIRECT_URL = '/profile'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
+
 from NongSanSachAHA.local_settings import *
