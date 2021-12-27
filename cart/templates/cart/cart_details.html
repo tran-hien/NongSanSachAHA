@@ -38,7 +38,7 @@
                             {% for i in cart_items %}
                             <tr>
                                 <td class="shoping__cart__item">
-                                    <img src="{% static p.product_img.url %}" alt="">
+                                    <img src="{{ i.product.product_img.url }}" alt="">
                                     <h5><a href="{% url 'product_app:details' i.product.id %}"> {{i.product.title}} </a></h5>
                                 </td>
                                 <td class="shoping__cart__price">

@@ -206,7 +206,7 @@
                     {% if product_item %} {% for p in product_item %}
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="{% static p.product_img.url %}">
+                            <div class="product__item__pic set-bg" data-setbg="{{p.product_img.url }}">
                                 <ul class="product__item__pic__hover">
                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                     <li>
