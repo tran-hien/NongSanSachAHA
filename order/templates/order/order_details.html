@@ -1,5 +1,5 @@
 {% extends 'homepage/base.html' %} {% load thumbnail %} {% block title %} Order no - {{order.id}} {% endblock title %} {% block content %}
-<h2 class="mt-4">Mã đặt - {{order.id}}</h2>
+<h2 class="mt-4">Order ID - {{order.id}}</h2>
 {% comment %}
 <h4 class="font-weight-light">
     {{order.user.first_name|default:order.user.username}} {{order.user.last_name}}
@@ -11,18 +11,18 @@
     <span class="badge badge-danger">đang chờ thanh toán</span> {% endif %}
 </h4>
 <h5 class="font-weight-light">
-    Địa chỉ thanh toán - {{order.address}}, {{order.city}}, {{order.pin_code}}
+    Address - {{order.address}}, {{order.city}}, {{order.pin_code}}
 </h5>
 <h5 class="font-weight-light">Trạng thái - {{order.status}}</h5>
 <h5 class="font-weight-light">Thời gian - {{order.created}}</h5>
-<h3 class="font-weight-light mt-4">Sản phẩm</h3>
+<h3 class="font-weight-light mt-4">Product</h3>
 <ul class="list-group shadow-sm">
     {% for o in order.items.all %}
     <li class="list-group-item d-flex align-items-center justify-content-between flex-column flex-md-row">
         <div class="d-flex align-items-center">
-            <img src="{% thumbnail o.product.image 75x0 %}" alt="{{o.product.title}}" class="img-fluid" />
+            <img src="{{ o.product.product_img.url }}" alt="{{o.product.title}}" class="img-fluid" />
             <h5 class="ml-3 mb-0 font-weight-light">
-                <a href="{{o.product.get_absolute_url}}">{{o.product.title}}</a>
+                <a href="{% url 'product_app:details' o.product.id %}">{{o.product.title}}</a>
             </h5>
         </div>
         <h5 class="font-weight-light mb-0">
@@ -37,6 +37,6 @@
     </li>
 </ul>
 <p class="my-2 text-center">
-    <a href="{{order.get_absolute_url}}" class="btn btn-success">Hóa đơn</a>
+    <a href="{{order.get_absolute_url}}" class="btn btn-success">Invoice</a>
 </p>
 {% endblock content %}

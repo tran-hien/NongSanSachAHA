@@ -10,10 +10,11 @@
                         <span>Categories</span>
                     </div>
                     <ul>
-                        <li><a href="#">Vegetables</a></li>
-                        <li><a href="#">Fresh Fruit</a></li>
-                        <li><a href="#">Dried Fruit</a></li>
-                        <li><a href="#">Drink Fruit</a></li>
+                        <li><a href="#">Hello</a></li>
+                        {% if categories %} {% for i in categories %}
+                        <li><a href="#">{{ i.title }}</a></li>
+
+                        {% endfor %} {% endif %}
                     </ul>
                 </div>
             </div>

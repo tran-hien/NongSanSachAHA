@@ -12,12 +12,12 @@
             <span class="badge badge-info font-weight-light">{{order.status}}</span> {% endif %}
         </h5>
         <h3>
-            <a href="{% url 'orders:details' order.id %}">Order id - {{order.id}}</a>
+            <a href="{% url 'order_app:order_details' order.id %}">Order id - {{order.id}}</a>
         </h3>
         <h5>{{order.total_price}}VNĐ</h5>
         <p class="mb-0">{{order.total_items}} Items</p>
         <p class="mb-0">
-            Delivery Address - {{order.address}}, {{order.city}}, {{order.pin_code}}
+            Delivery Address - {{order.address}}, {{order.city}}, {{order.credit_card}}
         </p>
         <p class="mb-0">Placed {{order.created|timesince}} ago.</p>
     </li>

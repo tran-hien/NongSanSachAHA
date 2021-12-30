@@ -16,3 +16,11 @@ class ProductDetail(TemplateView):
     def get(self, request, product_id):
         product_detail_item = models.Product.objects.get(pk=product_id)
         return render(request, "product/product_details.html", {'pd': product_detail_item})
+
+class CategoriesClass(TemplateView):
+    template_name = 'homepage/hero_section.html'
+    
+    def get(self, request):
+        all_categories = models.Category.objects.all()
+        context = {'categories': all_categories}
+        return render(request, "homepage/hero_section.html", context)

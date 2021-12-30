@@ -125,13 +125,12 @@
                         <li><a href="{% url 'product_app:product' %}">Product</a></li>
                         <li><a href="#">Pages</a>
                             <ul class="header__menu__dropdown">
-                                <li><a href="./shop-details.html">Shop Details</a></li>
-                                <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                <li><a href="./checkout.html">Check Out</a></li>
-                                <li><a href="./blog-details.html">Blog Details</a></li>
+                                <li><a href="{% url 'cart_app:cart_details' %}">Shoping Cart</a></li>
+                                <li><a href="{% url 'order_app:checkout' %}">CheckOut</a></li>
+                                <li><a href="{% url 'order_app:my_orders' %}">My Order List</a></li>
                             </ul>
                         </li>
-                        <li><a href="./blog.html">Blog</a></li>
+                        <li><a href="{% url 'core_app:fb_view' %}">Feedback</a></li>
                         <li><a href="{% url 'core_app:contacts' %}">Contact</a></li>
                     </ul>
                 </nav>
@@ -140,7 +139,7 @@
                 <div class="header__cart">
                     <ul>
                         <li><a href="#"><i class="fa fa-heart"></i> <span>0</span></a></li>
-                        <li><a href="{% url 'cart:cart_details' %}"><i class="fa fa-shopping-bag"></i> <span>0</span></a></li>
+                        <li><a href="{% url 'cart_app:cart_details' %}"><i class="fa fa-shopping-bag"></i> <span>0</span></a></li>
                     </ul>
                     <div class="header__cart__price">item: <span>0</span></div>
                 </div>
