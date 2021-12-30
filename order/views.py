@@ -10,9 +10,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
 
-class CreateOrder(LoginRequiredMixin, generic.CreateView):
+class Checkout(LoginRequiredMixin, generic.CreateView):
     form_class = OrderForm
-    template_name = 'order/place_order.html'
+    template_name = 'order/checkout.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -26,7 +26,7 @@ class CreateOrder(LoginRequiredMixin, generic.CreateView):
     def form_valid(self, form):
         cart = Cart(self.request)
         if len(cart) == 0:
-            return redirect('cart:cart_details')
+            return redirect('cart_app:cart_details')
         order = form.save(commit=False)
         order.user = self.request.user
         order.total_price = cart.get_total_price()

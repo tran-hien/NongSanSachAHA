@@ -46,7 +46,7 @@
                                 </td>
                                 <td class="shoping__cart__quantity">
                                     <div class="quantity">
-                                        <form action="{% url 'cart:add' %}" class="form-inline" method="POST">
+                                        <form action="{% url 'cart_app:add' %}" class="form-inline" method="POST">
                                             {% csrf_token %} {{i.form.product_id}}
                                             <div class="input-group" style="padding: 0px;">
                                                 {{i.form.quantity}}
@@ -63,7 +63,7 @@
                                     {{i.total}}VNĐ
                                 </td>
                                 <td class="shoping__cart__item__close">
-                                    <a href="{% url 'cart:remove' i.product.id %}"><span class="icon_close"></span></a>
+                                    <a href="{% url 'cart_app:remove' i.product.id %}"><span class="icon_close"></span></a>
                                 </td>
                             </tr>
                             {% endfor %}
@@ -76,7 +76,7 @@
             <div class="col-lg-12">
                 <div class="shoping__cart__btns">
                     <a href="{% url 'product_app:product' %}" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-                    <a href="{% url 'cart:clear' %}" class="primary-btn cart-btn cart-btn-right">
+                    <a href="{% url 'cart_app:clear' %}" class="primary-btn cart-btn cart-btn-right">
                         Clear Cart
                     </a>
                 </div>
@@ -87,7 +87,7 @@
                     <ul>
                         <li>Total <span>{{total}}VNĐ</span></li>
                     </ul>
-                    <a href="{% url 'orders:place' %}" class="primary-btn">Checkout</a>
+                    <a href="{% url 'order_app:checkout' %}" class="primary-btn">Checkout</a>
                 </div>
             </div>
         </div>

@@ -71,7 +71,7 @@
                     <div class="product__details__price">{{ pd.price }}VNĐ</div>
                     <p>{{ pd.description }}</p>
 
-                    <form method="POST" action="{% url 'cart:add' %}">
+                    <form method="POST" action="{% url 'cart_app:add' %}">
                         {% csrf_token %}
                         <div class="product__details__quantity">
                             <div class="quantity">

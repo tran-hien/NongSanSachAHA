@@ -19,7 +19,7 @@ def add_to_cart(request):
         product = get_object_or_404(Product, id=product_id, active=True)
         cart.add(product_id, product.price, quantity)
         messages.success(request, f'{product.title} added to cart.')
-    return redirect('cart:cart_details')
+    return redirect('cart_app:cart_details')
 
 
 @login_required
@@ -40,11 +40,11 @@ def cart_details(request):
 def remove_from_cart(request, id):
     cart = Cart(request)
     cart.remove(str(id))
-    return redirect('cart:cart_details')
+    return redirect('cart_app:cart_details')
 
 
 @login_required
 def clear_cart(request):
     cart = Cart(request)
     cart.clear()
-    return redirect('cart:cart_details')
+    return redirect('cart_app:cart_details')

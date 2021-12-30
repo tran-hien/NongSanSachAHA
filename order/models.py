@@ -17,11 +17,11 @@ choices = (
 
 
 class Order(models.Model):
-    user = models.ForeignKey(User,
-                             related_name='orders', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name='orders', on_delete=models.CASCADE)
+    phone_number = models.CharField(default=0, max_length=15)
     address = models.CharField(default=0,max_length=150, blank=False, null=False)
-    pin_code = models.CharField(max_length=10, default=0)
     city = models.CharField(max_length=50, default=0)
+    credit_card = models.CharField(max_length=10, default=0)
     paid = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -36,7 +36,7 @@ class Order(models.Model):
         return f'Order {self.id}'
 
     def get_absolute_url(self):
-        return reverse('orders:invoice', kwargs={'pk': self.pk})
+        return reverse('order_app:invoice', kwargs={'pk': self.pk})
 
 
 class OrderItem(models.Model):

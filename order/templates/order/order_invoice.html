@@ -9,12 +9,12 @@
 
 <body>
     <div class="container my-4">
-        <h2>Mã đặt - {{order.id}}</h2>
+        <h2>Order ID - {{order.id}}</h2>
         <h4 class="mb-3">
-            Tới - {{order.user.first_name|default:order.user.username}} {{order.user.last_name}}
+            Customer - {{order.user.first_name|default:order.user.username}} {{order.user.last_name}}
         </h4>
         <h4 class="font-weight-light">{{order.address}}</h4>
-        <h4 class="font-weight-light mb-3">{{order.city}}, {{order.pin_code}}</h4>
+        <h4 class="font-weight-light mb-3">{{order.city}}, {{order.credit_card}}</h4>
         <h5 class="font-weight-light mb-4">Placed on {{order.created}}</h5>
         <hr />
         <table class="table table-striped mt-4">
