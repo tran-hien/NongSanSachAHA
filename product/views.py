@@ -18,8 +18,24 @@ def search(request):
     return render(request, 'product/search.html',
     context )
 def freshfruit(request):
-    return render(request,'product/freshfruit.html',{} )
+    fresh_products = models.Product.objects.all()
+    context = {'product_item': fresh_products}
+    return render(request,'product/freshfruit.html',context )
 
+def drinkfruit(request):
+    drink_products = models.Product.objects.all()
+    context = {'product_item': drink_products}
+    return render(request,'product/drinkfruit.html',context )
+
+def driedfruit(request):
+    dried_products = models.Product.objects.all()
+    context = {'product_item': dried_products}
+    return render(request,'product/driedfruit.html',context )
+
+def vegetable(request):
+    vegetable = models.Product.objects.all()
+    context = {'product_item': vegetable}
+    return render(request,'product/vegetable.html',context )
 class ProductClass(TemplateView):
     template_name = 'product/product.html'
 

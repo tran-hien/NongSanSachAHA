@@ -10,14 +10,12 @@
                         <span>Categories</span>
                     </div>
                     <ul>
-                        <li><a href="#">Vegetables</a></li>
+                        <li><a href="{% url 'product_app:vegetable'%}">Vegetables</a></li>
                         <li><a href="{% url 'product_app:freshfruit'%}">Fresh Fruit</a></li>
-                        <li><a href="#">Dried Fruit</a></li>
-                        <li><a href="#">Drink Fruit</a></li>
-                        {% if categories %} {% for i in categories %}
-                        <li><a href="#">{{ i.title }}</a></li>
+                        <li><a href="{% url 'product_app:driedfruit'%}">Dried Fruit</a></li>
+                        <li><a href="{% url 'product_app:drinkfruit'%}">Drink Fruit</a></li>
 
-                        {% endfor %} {% endif %}
+                       
                     </ul>
                 </div>
             </div>
