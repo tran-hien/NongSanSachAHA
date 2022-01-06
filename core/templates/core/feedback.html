@@ -17,15 +17,17 @@
     </div>
 </section>
 
-<div class="container">
-    <form method="POST">
+<div class="container" style="margin-top: 20px; margin-left: 400px;" >
+    <form method="POST" >
         {% csrf_token %}
-        <div class="input-group">
-            <label>Name <span class="required">*</span></label> {{ f.name }}
-            <label>FEEDBACK <span class="required">*</span></label> {{ f.feedback }}
+        <div class="input-group mb-3">
+            <div><label style="color: #7fad39;">NAME <span class="required" style=" margin-top: 2px; margin-left: 32px; color: red;">*</span></label> {{ f.name }}</div>
+            
         </div>
-
-        <button type="submit" class="site-btn">SEND FEEDBACK</button>
+        <div class="input-group">
+            <div><label style="margin-left: 1px; color: #7fad39;">FEEDBACK <span class="required" style="color: red;">*</span></label> {{ f.feedback }}</div>
+        </div>
+        <button type="submit" class="site-btn" style=" margin-top:19px ; margin-left: 88px; margin-bottom: 19px;">SEND FEEDBACK</button>
     </form>
 </div>
 

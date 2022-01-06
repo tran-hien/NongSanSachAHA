@@ -21,10 +21,10 @@
     <div class="container">
         <div class="row">
             {%for f in feedbacks%}
-            <div class="col-lg-12">
-                <div class="center">
+            <div class="col-lg-12 container " style="border-style:outset ; margin-top: 2px; margin-left: 2px; border-color: #7fad39;">
+                <div class="center" style="padding: 14px;">
 
-                    <h3>{{f.name }}</h3>
+                    <h4>{{f.name }}</h4>
                     <p>Created: {{f.date}}</p>
                     <p>{{f.feedback}}</p>
                 </div>
@@ -32,7 +32,7 @@
             </div>
             {% endfor %}
         </div>
-        <a href="{% url 'core_app:feed_back' %}" class="primary-btn">Send My Feedback</a>
+        <a href="{% url 'core_app:feed_back' %}" class="primary-btn" style="margin-top: 27px; margin-left: -12px;">Send My Feedback</a>
     </div>
 
     </div>

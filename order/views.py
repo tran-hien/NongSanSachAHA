@@ -40,7 +40,7 @@ class Checkout(LoginRequiredMixin, generic.CreateView):
         OrderItem.objects.bulk_create(orderitems)
         cart.clear()
         messages.success(self.request, 'Your order is successfully placed.')
-        return redirect('product_app:product')
+        return redirect('order_app:order_details')
 
 
 class MyOrders(LoginRequiredMixin, generic.ListView):

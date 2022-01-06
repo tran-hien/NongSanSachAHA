@@ -37,6 +37,7 @@
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="checkout__order">
+
                             <h4>Your Order</h4>
                             <div class="checkout__order__products">Products <span>Total</span></div>
                             {% for i in summary %}
@@ -47,12 +48,13 @@
                             <h5 class="card-text font-weight-light">No items in cart.</h5>
                             {% endfor %}
 
-                            <div class="checkout__order__total">Total <span>{{cart.get_total_price}}VNĐ</span></div>
+                            <div class="checkout__order__total">Total <span>{{order.total_price}}VNĐ</span></div>
 
 
                             {% if cart.empty %}
                             <div class="alert alert-danger my-2">Your cart is empty.</div>
-                            <button disabled class="site-btn">PLACE ORDER</button> {% else %}
+                            <button disabled class="site-btn">PLACE ORDER</button> 
+                            {% else %}
                             <button type="submit" class="site-btn">PLACE ORDER</button> {% endif %}
                         </div>
                     </div>
