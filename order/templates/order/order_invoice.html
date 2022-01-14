@@ -52,11 +52,13 @@
             <span class="badge badge-danger" style="background-color: #7fad39;">Not Paid</span> {% endif %}
         </h5>
 
-        <h5>Status {{order.status}}</h5>
+        <h5>Status:
+            <span class="badge badge-success" style="background-color: #7fad39;">{{order.status}}</span></h5>
     </div>
     <footer class="text-center d-print-none">
-        <button class="btn" onclick="window.print()" style="background-color: #7fad39; color:white;">Print </button>
         <button class="btn" onclick="history.back()" style="background-color: #7fad39; color:white;">Back</button>
+        <button class="btn" onclick="window.print()" style="background-color: #7fad39; color:white;">Print </button>
+
     </footer>
 </body>
 
