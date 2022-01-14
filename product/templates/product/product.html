@@ -24,58 +24,30 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-7">
-                <div class="product__discount">
-                    <div class="section-title product__discount__title">
-                        <h2>Sale Off</h2>
-                    </div>
-                    <div class="row">
-                        <div class="product__discount__slider owl-carousel">
-                            {%for i in product_item%}
-                            <div class="col-lg-4">
-                                <div class="product__discount__item">
-                                    <div class="product__discount__item__pic set-bg" data-setbg="{{i.product_img.url}}">
-                                        <div class="product__discount__percent">-20%</div>
-                                        <ul class="product__item__pic__hover">
-                                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="product__discount__item__text">
-                                        <span>Dried Fruit</span>
-                                        <h5><a href="#">{{i.title}}</a></h5>
-                                        <div class="product__item__price">{{i.price}} <span>$36.00</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            {%endfor%}
-                        </div>
-                    </div>
-                </div>
+
                 <div class="filter__item">
                     <div class="row">
                         <div class="col-lg-4 col-md-5">
                             <div class="filter__sort">
-                                <span style="margin-left: 270px; margin-bottom: 15px;"><b> Sort By</b></span>
+                                <span><b> Sort By</b></span>
                                 <form action="" method="get">
-                                    <ul style="margin-left: 50px;" class=" d-flex align-items-center justify-content-lg-end mb-0 ml-5">
 
-                                      
-                                      <li class="list-inline-item" >                                    
-                                            <select class="selectpicker ml-auto" name="sorting" data-width="200"
-                                              data-style="bs-select-form-control" data-title="Phân loại">
-                                              <option value="title" name="sorting">Tên</option>
-                                              <option value="low-high" name="sorting">Giá: Từ thấp đến cao</option>
-                                              <option value="high-low" name="sorting">Giá: Từ cao đến thấp</option>
-                                            </select>                    
-                                      </li>
-                                      <li class="list-inline-item">
-                                        <input type="submit" value="Chọn">     
-                                      </li>
-                                                
-                      
-                                    </ul>   
-                                    </form>
+
+
+                                    <div class="list-inline-item">
+                                        <select class="selectpicker ml-auto" name="sorting" data-width="200" data-style="bs-select-form-control" data-title="Phân loại">
+                                              <option value="title" name="sorting">Name</option>
+                                              <option value="low-high" name="sorting">Price: Low To High</option>
+                                              <option value="high-low" name="sorting">Price: High To Low</option>
+                                        </select>
+                                    </div>
+                                    <div class="list-inline-item">
+                                        <input type="submit" value="Sort">
+                                    </div>
+
+
+
+                                </form>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4">
@@ -83,12 +55,7 @@
                                 <h6><span>{{product_count}}</span> Products found</h6>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-3">
-                            <div class="filter__option">
-                                <span class="icon_grid-2x2"></span>
-                                <span class="icon_ul"></span>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
                 <div class="row">
@@ -97,7 +64,6 @@
                         <div class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="{{p.product_img.url }}">
                                 <ul class="product__item__pic__hover">
-                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                     <li>
                                         <form method="POST" action="{% url 'cart_app:add' %}">
                                             {% csrf_token %}
@@ -116,13 +82,12 @@
                             </div>
                         </div>
                     </div>
-                    {% endfor %} {% endif %}
-                    {% if product_items and not product_item%} {% for p in product_items %}
+                    {% endfor %} {% endif %} {% if product_items and not product_item%} {% for p in product_items %}
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="{{p.product_img.url }}">
                                 <ul class="product__item__pic__hover">
-                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+
                                     <li>
                                         <form method="POST" action="{% url 'cart_app:add' %}">
                                             {% csrf_token %}
@@ -143,35 +108,32 @@
                     </div>
                     {% endfor %} {% endif %}
                 </div>
-        
-        <div class="row">
-            <div class="col-lg-12">
-               
-                {% if product_items.has_other_pages and not product_item %}
-                <ul class="pagination" style="margin-left: 493px;">
-                  {% if product_items.has_previous %}
-                    <li><a class="pagination" style= " margin-top: 0px; margin-left :14px; border: 1px ridge #7fad39; size: 50px; padding: 20px;" href="?page={{ product_items.previous_page_number }}">&laquo;</a></li>
-                  {% else %}
-                    <li style="color: aliceblue;" class="disabled"><span>&laquo;</span></li>
-                  {% endif %}
-                  {% for i in product_items.page_range %}
-                    {% if product_items.number == i %}
-                      <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-                    {% else %}
-                      <li><a href="?page={{ i }}">{{ i }}</a></li>
-                    {% endif %}
-                  {% endfor %}
-                  {% if product_items.has_next %}
-                    <li style="size: 50px;"><a class="pagination" href="?page={{ product_items.next_page_number }}" style= "margin-top: 0px; margin-left :21px; border: 1px ridge #7fad39; size: 50px; padding: 20px;" >&raquo;</a></li>
-                  {% else %}
-                    <li style="color:antiquewhite ;" class="disabled"><span>&raquo;</span></li>
-                  {% endif %}
-                </ul>
-              {% endif %}
-           
-            </div>
-        </div>
-   
+
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        {% if product_items.has_other_pages and not product_item %}
+                        <ul class="pagination" style="margin-left: 493px;">
+                            {% if product_items.has_previous %}
+                            <li><a class="pagination" style=" margin-top: 0px; margin-left :14px; border: 1px ridge #7fad39; size: 50px; padding: 20px;" href="?page={{ product_items.previous_page_number }}">&laquo;</a></li>
+                            {% else %}
+                            <li style="color: aliceblue;" class="disabled"><span>&laquo;</span></li>
+                            {% endif %} {% for i in product_items.page_range %} {% if product_items.number == i %}
+                            <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span>
+                            </li>
+                            {% else %}
+                            <li><a href="?page={{ i }}">{{ i }}</a></li>
+                            {% endif %} {% endfor %} {% if product_items.has_next %}
+                            <li style="size: 50px;"><a class="pagination" href="?page={{ product_items.next_page_number }}" style="margin-top: 0px; margin-left :21px; border: 1px ridge #7fad39; size: 50px; padding: 20px;">&raquo;</a></li>
+                            {% else %}
+                            <li style="color:antiquewhite ;" class="disabled"><span>&raquo;</span></li>
+                            {% endif %}
+                        </ul>
+                        {% endif %}
+
+                    </div>
+                </div>
+
 </section>
 <!-- Product Section End -->
 

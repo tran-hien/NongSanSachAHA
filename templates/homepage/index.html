@@ -1,13 +1,24 @@
 {% extends 'homepage/base.html' %} {% load static %} {% block title %}AHA | Home{% endblock %} {% block content %} {% include 'homepage/hero_section.html' %}
 
-<div style="margin-top: -54px;" class="hero__item set-bg" data-setbg="{% static 'homepage/img/hero/banner.jpg' %}">
+<section class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+
+            </div>
+            <div class="col-lg-9">
+                <div class="hero__item set-bg" data-setbg="{% static 'homepage/img/hero/banner.jpg' %}">
                     <div class="hero__text">
                         <span>FRUIT FRESH</span>
                         <h2>Vegetable <br />100% Organic</h2>
                         <p>Free Pickup and Delivery Available</p>
                         <a href="{% url 'product_app:product'%}" class="primary-btn">SHOP NOW</a>
                     </div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <!-- Categories Section Begin -->
 <section class="categories" style="margin-bottom: 50px;">
     <div class="container">

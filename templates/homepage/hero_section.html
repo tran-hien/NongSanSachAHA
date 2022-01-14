@@ -1,6 +1,6 @@
  {% load static %}
 <!-- Hero Section Begin -->
-<section class="hero">
+<section class="hero hero-normal">
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
@@ -15,7 +15,7 @@
                         <li><a href="{% url 'product_app:driedfruit'%}">Dried Fruit</a></li>
                         <li><a href="{% url 'product_app:drinkfruit'%}">Drink Fruit</a></li>
 
-                       
+
                     </ul>
                 </div>
             </div>
@@ -23,9 +23,9 @@
                 <div class="hero__search">
                     <div class="hero__search__form">
                         <form action="{%url 'product_app:search'%}" method="POST">
-                            {% csrf_token %} 
-                            
-                            <input type="text" name ="q" placeholder="What do yo u need?">
+                            {% csrf_token %}
+
+                            <input type="text" name="q" placeholder="What do yo u need?">
                             <button type="submit" class="site-btn">Search</button>
                         </form>
                     </div>

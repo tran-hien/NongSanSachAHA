@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, Http404
+from django.urls.base import reverse
 from django.views import generic
 from .forms import OrderForm
 from .models import Order, OrderItem
@@ -21,6 +22,7 @@ class Checkout(LoginRequiredMixin, generic.CreateView):
         cart_items = map(
             lambda p: {'product': p, 'quantity': cart.cart[str(p.id)]['quantity'], 'total': p.price*cart.cart[str(p.id)]['quantity']}, products)
         context['summary'] = cart_items
+        context['total'] = cart.get_total_price()
         return context
 
     def form_valid(self, form):
@@ -40,7 +42,8 @@ class Checkout(LoginRequiredMixin, generic.CreateView):
         OrderItem.objects.bulk_create(orderitems)
         cart.clear()
         messages.success(self.request, 'Your order is successfully placed.')
-        return redirect('product_app:product')
+        
+        return redirect('order_app:order_details', pk=order.id)
 
 
 class MyOrders(LoginRequiredMixin, generic.ListView):
