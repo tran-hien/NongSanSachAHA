@@ -1,5 +1,13 @@
 {% extends 'homepage/base.html' %} {% load static %} {% block title %}AHA | Home{% endblock %} {% block content %} {% include 'homepage/hero_section.html' %}
 
+<div style="margin-top: -54px;" class="hero__item set-bg" data-setbg="{% static 'homepage/img/hero/banner.jpg' %}">
+                    <div class="hero__text">
+                        <span>FRUIT FRESH</span>
+                        <h2>Vegetable <br />100% Organic</h2>
+                        <p>Free Pickup and Delivery Available</p>
+                        <a href="{% url 'product_app:product'%}" class="primary-btn">SHOP NOW</a>
+                    </div>
+</div>
 <!-- Categories Section Begin -->
 <section class="categories" style="margin-bottom: 50px;">
     <div class="container">
@@ -7,22 +15,22 @@
             <div class="categories__slider owl-carousel">
                 <div class="col-lg-3">
                     <div class="categories__item set-bg" data-setbg="{% static 'homepage/img/categories/cat-1.jpg' %}">
-                        <h5><a href="#">Fresh Fruit</a></h5>
+                        <h5><a href="freshfruit">Fresh Fruit</a></h5>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="categories__item set-bg" data-setbg="{% static 'homepage/img/categories/cat-2.jpg' %}">
-                        <h5><a href="#">Dried Fruit</a></h5>
+                        <h5><a href="{% url 'product_app:driedfruit'%}">Dried Fruit</a></h5>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="categories__item set-bg" data-setbg="{% static 'homepage/img/categories/cat-3.jpg' %}">
-                        <h5><a href="#">Vegetables</a></h5>
+                        <h5><a href="#{% url 'product_app:vegetable'%}">Vegetables</a></h5>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="categories__item set-bg" data-setbg="{% static 'homepage/img/categories/cat-4.jpg' %}">
-                        <h5><a href="#">Drink Fruit</a></h5>
+                        <h5><a href="{% url 'product_app:drinkfruit'%}">Drink Fruit</a></h5>
                     </div>
                 </div>
 

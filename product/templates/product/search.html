@@ -1,0 +1,72 @@
+{% extends 'homepage/base.html' %}
+{% block content %}
+<section class="hero hero-normal">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="hero__categories">
+                    <div class="hero__categories__all">
+                        <i class="fa fa-bars"></i>
+                        <span>Categories</span>
+                    </div>
+                    <ul>
+                        <li><a href="#">Vegetables</a></li>
+                        <li><a href="#">Fresh Fruit</a></li>
+                        <li><a href="#">Dried Fruit</a></li>
+                        <li><a href="#">Drink Fruit</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="hero__search">
+                    <div class="hero__search__form">
+                        <form  method="POST" action="{% url 'product_app:search' %}">
+                            {% csrf_token %} 
+                            <input type="search" name="q" placeholder="Search">
+                            <button class="site-btn" type="submit">Search</button>
+                        </form>
+                    </div>
+                    <div class="hero__search__phone">
+                        <div class="hero__search__phone__icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="hero__search__phone__text">
+                            <h5>+012 345 678</h5>
+                            <span>support 24/7 time</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="row">
+{% for data in data %}
+
+    <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="product__item">
+            <div class="product__item__pic set-bg" data-setbg="{{data.product_img.url}}">
+                <ul class="product__item__pic__hover">
+                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                    <li>
+                        <form method="POST" action="{% url 'cart_app:add' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="quantity" value="1" />
+                            <input type="hidden" name="product_id"  value="{{ data.id }}"/>
+                            <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-shopping-cart"></i>
+                        </button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+            <div class="product__item__text">
+                <h6><a href="{% url 'product_app:details' data.id %}">{{ data.title }}</a></h6>
+                <h5>{{ data.price }}VNĐ</h5>
+            </div>
+        </div>
+    </div>
+
+{% endfor %}
+</div>
+{% endblock  %}

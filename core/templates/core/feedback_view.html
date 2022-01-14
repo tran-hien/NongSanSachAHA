@@ -21,10 +21,10 @@
     <div class="container">
         <div class="row">
             {%for f in feedbacks%}
-            <div class="col-lg-12">
-                <div class="center">
+            <div class="col-lg-12 container " style="border-style:outset ; margin-top: 2px; margin-left: 2px; border-color: #7fad39;">
+                <div class="center" style="padding: 14px;">
 
-                    <h3>{{f.name }}</h3>
+                    <h4>{{f.name }}</h4>
                     <p>Created: {{f.date}}</p>
                     <p>{{f.feedback}}</p>
                 </div>
@@ -32,10 +32,23 @@
             </div>
             {% endfor %}
         </div>
-        <a href="{% url 'core_app:feed_back' %}" class="primary-btn">Send My Feedback</a>
-    </div>
-
+        <a href="{% url 'core_app:feed_back' %}" class="primary-btn" style="margin-top: 27px; margin-left: -12px;">SEND YOUR FEEDBACK HERE</a>
     </div>
 </section>
+<div class="container" style="margin-top: 20px; margin-left: 400px;" >
+    <form method="POST" >
+        {% csrf_token %}
+        <div class="input-group mb-3">
+            <div><label style="color: #7fad39;">NAME <span class="required" style=" margin-top: 2px; margin-left: 32px; color: red;">*</span></label> {{ f.name }}</div>
+            
+        </div>
+        <div class="input-group">
+            <div><label style="margin-left: 1px; color: #7fad39;">FEEDBACK <span class="required" style="color: red;">*</span></label> {{ f.feedback }}</div>
+        </div>
+        <button type="submit" class="site-btn" style=" margin-top:19px ; margin-left: 88px; margin-bottom: 19px;">SEND FEEDBACK</button>
+    </form>
+</div>
+
+
 
 {% endblock %}

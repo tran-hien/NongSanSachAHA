@@ -32,10 +32,22 @@ class FeedbackClass(LoginRequiredMixin, TemplateView):
                 return render(request, 'core/fb_sent.html')
         return render(request, 'core/feedback.html', {'f':feedbackForm})
 
-class FeedbackViewClass(TemplateView):
+class FeedbackViewClass(LoginRequiredMixin,TemplateView):
+    form_class = FeedbackForm
     template_name = 'core/feedback_view.html'
-
-    def get(self, request):
+    
+    def post(self, request):
+        feedbackForm=FeedbackForm()
         feedbacks_list=Feedback.objects.all()
-        context = {'feedbacks':feedbacks_list}
+        context = {'feedbacks':feedbacks_list,'f':feedbackForm }
+        if request.method == 'POST':
+            feedbackForm = FeedbackForm(request.POST)
+            if feedbackForm.is_valid():
+                feedbackForm.save()
+                return render(request, 'core/feedback_view.html',context)
+        return render(request, 'core/feedback_view.html',context)
+    def get(self, request):
+        feedbackForm=FeedbackForm()
+        feedbacks_list=Feedback.objects.all()
+        context = {'feedbacks':feedbacks_list,'f':feedbackForm }
         return render(request,'core/feedback_view.html', context)
