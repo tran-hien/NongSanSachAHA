@@ -5,6 +5,7 @@ Web bán hàng nông sản AHA
 - Chuyển đến thư mục venv để kích hoạt -trên window : Scripts/activate
 	     				                -trên linux :source bin/activate
 - Truy cập web : https://docs.python.org/3/library/venv.html để biết thêm chi tiết 
+- Cài đặt môi trường ảo thành công thì terminal sẽ có dạng : (venv) [đường dẫn đến project] :
 ## 1.2 Cài đặt các thư viện cần thiết
 - Django : pip install django
 - easy-thumbnail : pip install easy-thumbnail
