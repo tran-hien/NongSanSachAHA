@@ -17,16 +17,6 @@
     </div>
 </section>
 
-<div class="container">
-    <form method="POST">
-        {% csrf_token %}
-        <div class="input-group">
-            <label>Name <span class="required">*</span></label> {{ f.name }}
-            <label>FEEDBACK <span class="required">*</span></label> {{ f.feedback }}
-        </div>
 
-        <button type="submit" class="site-btn">SEND FEEDBACK</button>
-    </form>
-</div>
 
 {% endblock %}
