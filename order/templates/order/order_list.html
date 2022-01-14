@@ -1,52 +1,64 @@
-{% extends 'homepage/base.html' %} {% block title %}AHA | Your Orders{% endblock title %} {% block content %}
-<h1 class="font-weight-light mt-3">Your Orders</h1>
-<hr />
-<ul class="list-group my-3">
-    {% for order in orders %}
-    <li class="list-group-item">
-        <h5 class="mb-2">
-            {% if order.status == 'Delivered' %}
-            <span class="badge badge-success font-weight-light">
-        {{order.status}}
-      </span> {% else %}
-            <span class="badge badge-info font-weight-light">{{order.status}}</span> {% endif %}
-        </h5>
-        <h3>
-            <a href="{% url 'order_app:order_details' order.id %}">Order id - {{order.id}}</a>
-        </h3>
-        <h5>{{order.total_price}}VNĐ</h5>
-        <p class="mb-0">{{order.total_items}} Items</p>
-        <p class="mb-0">
-            Delivery Address - {{order.address}}, {{order.city}}, {{order.credit_card}}
-        </p>
-        <p class="mb-0">Placed {{order.created|timesince}} ago.</p>
-    </li>
-    {% empty %}
-    <li class="list-group-item text-center border-white">
-        <h3 class="font-weight-light">You haven't placed any orders.</h3>
-        <a href="{% url 'product_app:product' %}" class="btn btn-secondary">
-      Continue Shopping
-    </a>
-    </li>
-    {% endfor %}
-</ul>
-{% with page_obj as page %}
-<p>Page <b>{{page.number}}</b> of <b>{{page.paginator.num_pages}}</b></p>
-<nav>
-    <ul class="pagination">
-        {% if page.has_previous %}
-        <li class="page-item">
-            <a href="?page={{page.previous_page_number}}" class="page-link">
-        Previous
-      </a>
-        </li>
-        {% endif %}
-        <li class="page-item active"><a href="#" class="page-link">1</a></li>
-        {% if page.has_next %}
-        <li class="page-item">
-            <a href="?page={{page.next_page_number}}" class="page-link">Next</a>
-        </li>
-        {% endif %}
-    </ul>
-</nav>
-{% endwith %} {% endblock content %}
+{% extends 'homepage/base.html' %} {% load static %} {% block title %}AHA | Your Orders{% endblock title %} {% block content %}
+
+<section class="breadcrumb-section set-bg" data-setbg="{% static 'homepage/img/breadcrumb.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>Your Orders</h2>
+                    <div class="breadcrumb__option">
+                        <a href="{% url 'core_app:index' %}">Home</a>
+                        <span>Your Order</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+
+<section>
+    <div class="container">
+        <ul class="list-group my-3">
+            {% for order in orders %}
+            <li class="list-group-item">
+                <h5 class="mb-2">
+                    {% if order.status == 'Delivered' %}
+                    <span class="badge badge-success font-weight-light">
+                        {{order.status}}
+                    </span> {% else %}
+                    <span class="badge badge-info font-weight-light" style="background-color: #7fad39;">{{order.status}}</span> {% endif %}
+                </h5>
+                <h3>
+                    <a href="{% url 'order_app:order_details' order.id %}" style="color: #7fad39;">Order id - {{order.id}}</a>
+                </h3>
+                <h5>{{order.total_price}}VNĐ</h5>
+                <p class="mb-0">{{order.total_items}} Items</p>
+                <p class="mb-0">
+                    Delivery Address - {{order.address}}, {{order.city}}, {{order.credit_card}}
+                </p>
+                <p class="mb-0">Placed {{order.created|timesince}} ago.</p>
+            </li>
+            {% empty %}
+            <li class="list-group-item text-center border-white">
+                <h3 class="font-weight-light">You haven't placed any orders.</h3>
+                <a href="{% url 'product_app:product' %}" class="btn btn-secondary">
+                    Continue Shopping
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+
+
+        <div class="product__pagination">
+            {% with page_obj as page %}
+            <p>Page <b>{{page.number}}</b> of <b>{{page.paginator.num_pages}}</b></p>
+            {% if page.has_previous %}
+            <a href="?page={{page.previous_page_number}}" class="page-link">Previous</a> {% endif %}
+            <a href="#">1</a> {% if page.has_next %}
+
+            <a href="?page={{page.next_page_number}}" class="page-link">Next</a> {% endif %} {% endwith %}
+        </div>
+    </div>
+</section>
+{% endblock content %}

@@ -1,42 +1,76 @@
-{% extends 'homepage/base.html' %} {% load thumbnail %} {% block title %} Order no - {{order.id}} {% endblock title %} {% block content %}
-<h2 class="mt-4">Order ID - {{order.id}}</h2>
-{% comment %}
-<h4 class="font-weight-light">
-    {{order.user.first_name|default:order.user.username}} {{order.user.last_name}}
-</h4>
-{% endcomment %}
-<h4>
-    {% if order.paid %}
-    <span class="badge badge-success">Paid</span> {% else %}
-    <span class="badge badge-danger">đang chờ thanh toán</span> {% endif %}
-</h4>
-<h5 class="font-weight-light">
-    Address - {{order.address}}, {{order.city}}, {{order.pin_code}}
-</h5>
-<h5 class="font-weight-light">Trạng thái - {{order.status}}</h5>
-<h5 class="font-weight-light">Thời gian - {{order.created}}</h5>
-<h3 class="font-weight-light mt-4">Product</h3>
-<ul class="list-group shadow-sm">
-    {% for o in order.items.all %}
-    <li class="list-group-item d-flex align-items-center justify-content-between flex-column flex-md-row">
-        <div class="d-flex align-items-center">
-            <img src="{{ o.product.product_img.url }}" alt="{{o.product.title}}" class="img-fluid" />
-            <h5 class="ml-3 mb-0 font-weight-light">
-                <a href="{% url 'product_app:details' o.product.id %}">{{o.product.title}}</a>
-            </h5>
+{% extends 'homepage/base.html' %} {% load static %} {% load thumbnail %} {% block title %} Order no - {{order.id}} {% endblock title %} {% block content %}
+
+<section class="breadcrumb-section set-bg" data-setbg="{% static 'homepage/img/breadcrumb.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>Order ID - {{order.id}}</h2>
+                    <div class="breadcrumb__option">
+                        <a href="{% url 'core_app:index' %}">Home</a>
+                        <span>Order ID - {{order.id}}</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <h5 class="font-weight-light mb-0">
-            {{o.product.price}}VNĐ * {{o.quantity}} = <b>{{o.total}}VNĐ</b>
-        </h5>
-    </li>
-    {% endfor %}
-    <li class="list-group-item bg-primary text-white">
-        <h5 class="mb-0 text-right font-weight-light">
-            Total - <b>{{order.total_price}}VNĐ</b>
-        </h5>
-    </li>
-</ul>
-<p class="my-2 text-center">
-    <a href="{{order.get_absolute_url}}" class="btn btn-success">Invoice</a>
-</p>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+
+<div class="container-xl">
+    <div style="text-align: center;">
+        <h4 class="font-weight-light">
+            {{order.user.username}}
+        </h4>
+        <div class="pt-1">
+            <p>Created: {{order.created}}</p>
+            <p>Address: {{order.address}}, {{order.city}}, {{order.credit_card}}</p>
+            <p>Status: {{order.status}}</p>
+        </div>
+        {% comment %} {% endcomment %}
+        <h4>
+            {% if order.paid %}
+            <span class="badge badge-success" style="background-color: #7fad39;">Paid</span> {% else %}
+            <span class="badge badge-danger" style="background-color: #7fad39;">Not Paid</span> {% endif %}
+        </h4>
+        <div class=" btn close text-white "> &times; </div>
+
+
+    </div>
+
+    <table class="table table-striped table-hover ">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>quantity</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for o in order.items.all %}
+            <tr>
+                <div class="d-flex align-items-center ">
+                    <td><img style="width: 110px; height: 110px; " src="{{ o.product.product_img.url }} " alt="{{o.product.title}} " class="img-fluid " />
+                        <a href="{% url 'product_app:details' o.product.id %} ">{{o.product.title}}</a>
+                    </td>
+
+                    <td>{{o.product.price}}VNĐ</td>
+                    <td>{{o.quantity}}</td>
+                    <td>{{o.total}}VNĐ</td>
+                </div>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-start align-items-center pl-3 py-3 mb-4 border-bottom ">
+        <div class="text-muted "> <b>Total:</b> </div>
+        <div class="ml-auto h5 "> {{order.total_price}}VNĐ <pre>                       </pre> </div>
+    </div>
+
+
+    <p class="my-2 text-center ">
+        <a href="{{order.get_absolute_url}} " class="btn" style="background-color: #7fad39; color:white;">Invoice</a>
+    </p>
+</div>
 {% endblock content %}
