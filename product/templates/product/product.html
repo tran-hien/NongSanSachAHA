@@ -36,9 +36,13 @@
 
                                     <div class="list-inline-item">
                                         <select class="selectpicker ml-auto" name="sorting" data-width="200" data-style="bs-select-form-control" data-title="Phân loại">
-                                              <option value="title" name="sorting">Name</option>
-                                              <option value="low-high" name="sorting">Price: Low To High</option>
-                                              <option value="high-low" name="sorting">Price: High To Low</option>
+                                            
+                                              <option value="title" name ="sorting" {% if sorting == "title" %} selected{% endif %} >Name</option>
+                                              <option value="low-high" name="sorting"{% if sorting == "low-high" %} selected{% endif %}>Price: Low To High</option>
+                                          
+                                              <option value="high-low" name="sorting"{% if sorting == "high-low" %} selected{% endif %}>Price: High To Low</option>
+                                            
+                                          
                                         </select>
                                     </div>
                                     <div class="list-inline-item">

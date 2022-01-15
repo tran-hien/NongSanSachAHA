@@ -81,8 +81,6 @@ class ProductClass(ListView):
             if sorting=='title':
                 product_order_price=Product.objects.all().order_by('title')    
         context=super(ProductClass,self).get_context_data(**kwargs)
-       
-        
         product_count=models.Product.objects.all().count()
         context = {'product_items': all_products, 'product_count': product_count,
          'product_item':product_order_price, 'sorting':sorting,
