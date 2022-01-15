@@ -1,6 +1,6 @@
 # NongSanSachAHA - Web bán hàng nông sản
 
-### Để chạy được Project này cần cài đặt Python trong máy tính:
+### Để chạy được Project này cần cài đặt Python trong máy tính rồi làm theo các bước sau:
 
 #### Bước 1: Extract/Unzip project
 
