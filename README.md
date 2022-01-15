@@ -4,9 +4,9 @@
 
 #### Bước 1: Extract/Unzip project
 
-#### Bước 2: Vào trong project folder mở command line hoặc window powershell rồi gõ 2 lệnh sau để cài đặt django và các thư viện cần thiết trong file requirements.txt
+#### Bước 2: Vào trong project folder mở command line hoặc window powershell rồi gõ lệnh sau để cài đặt django và các thư viện cần thiết trong file requirement.txt
 
-pip install -r requirements.txt
+pip install -r requirement.txt
 
 #### Bước 3: Sau khi máy báo đã cài đặt xong, gõ tiếp lệnh dưới để chạy server
 
