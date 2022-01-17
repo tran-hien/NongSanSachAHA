@@ -41,9 +41,9 @@
     <div class="col-lg-12">
 
         {% if product_item.has_other_pages %}
-        <ul class="pagination" style="margin-left: 493px;">
+        <ul class="pagination" style="margin-left: 570px;">
             {% if product_item.has_previous %}
-            <li><a class="pagination" style=" margin-top: 0px; margin-left :14px; border: 1px ridge #7fad39; size: 50px; padding: 20px;" href="?page={{ product_item.previous_page_number }}">&laquo;</a></li>
+            <li><a class="pagination" style=" margin-top: -62px; margin-left :14px; margin-bottom: 50px; border: 1px ridge #7fad39; size: 50px; padding: 20px;" href="?page={{ product_item.previous_page_number }}">&laquo;</a></li>
             {% else %}
             <li style="color: aliceblue;" class="disabled"><span>&laquo;</span></li>
             {% endif %} {% for i in product_item.p.page_range %} {% if product_item.number == i %}
@@ -52,7 +52,7 @@
             {% else %}
             <li><a href="?page={{ i }}">{{ i }}</a></li>
             {% endif %} {% endfor %} {% if product_item.has_next %}
-            <li style="size: 50px;"><a class="pagination" href="?page={{ product_item.next_page_number }}" style="margin-top: -65px; margin-left :83px; border: 1px ridge #7fad39; size: 50px; padding: 20px;">&raquo;</a></li>
+            <li style="size: 50px;"><a class="pagination" href="?page={{ product_item.next_page_number }}" style="margin-top: -62px; margin-left :23px; border: 1px ridge #7fad39; size: 50px; padding: 20px;">&raquo;</a></li>
             {% else %}
             <li style="color:antiquewhite ;" class="disabled"><span>&raquo;</span></li>
             {% endif %}
