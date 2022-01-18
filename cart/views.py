@@ -8,7 +8,7 @@ from cart.forms import CartForm
 # Create your views here.
 
 
-@login_required
+@login_required(login_url='/cart')
 @require_POST
 def add_to_cart(request):
     cart = Cart(request)
