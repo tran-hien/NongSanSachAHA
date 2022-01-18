@@ -5,7 +5,6 @@ from django.utils.translation import activate
 
 class Category(models.Model):
     title = models.CharField(default='', max_length=100)
-    #slug = models.CharField(max_length=100, default='')
     description = models.TextField(default='')
     active = models.BooleanField(default=True)
 

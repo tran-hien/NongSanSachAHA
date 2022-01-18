@@ -12,20 +12,6 @@ from django.contrib.auth.views import LoginView, LogoutView
 import user
 
 # Create your views here.
-'''
-class LoginClass(View):
-    def get(self, request):
-        return render(request, 'Login/login.html')
-
-    def post(self, request):
-        user_name = request.POST.get('tendangnhap')
-        passw = request.POST.get('matkhau')
-        my_user = authenticate(username=user_name, password = passw)
-        if my_user is None:
-            return HttpResponse("Login failed, user doesn't exist!!!")
-        login(request, my_user)
-        return render(request, 'Login/loginsuccess.html', {'u': my_user})
-'''
 
 class LoginClass(LoginView):
     template_name = 'Login/login.html'
