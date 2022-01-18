@@ -9,9 +9,9 @@
 pip install -r requirement.txt
 
 #### Bước 3: Sau khi máy báo đã cài đặt xong, gõ tiếp lệnh dưới để chạy server
-
+```
 python manage.py runserver
-
+```
 #### Bước 4: Mở trình duyệt bất kì và đến địa chỉ: localhost:8000
 
 - Đăng nhập với tư cách admin:
